@@ -1,7 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import { Memo, MEMO_CATEGORIES, DEFAULT_CATEGORIES } from '@/types/memo'
 import MemoItem from './MemoItem'
+import MemoDetailModal from './MemoDetailModal'
 
 interface MemoListProps {
   memos: Memo[]
@@ -30,6 +32,26 @@ export default function MemoList({
   onDeleteMemo,
   stats,
 }: MemoListProps) {
+  const [selectedMemo, setSelectedMemo] = useState<Memo | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleViewMemo = (memo: Memo) => {
+    setSelectedMemo(memo)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setSelectedMemo(null)
+  }
+
+  const handleEditFromModal = (memo: Memo) => {
+    onEditMemo(memo)
+  }
+
+  const handleDeleteFromModal = (id: string) => {
+    onDeleteMemo(id)
+  }
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
@@ -153,10 +175,20 @@ export default function MemoList({
               memo={memo}
               onEdit={onEditMemo}
               onDelete={onDeleteMemo}
+              onView={handleViewMemo}
             />
           ))}
         </div>
       )}
+
+      {/* 메모 상세 보기 모달 */}
+      <MemoDetailModal
+        memo={selectedMemo}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onEdit={handleEditFromModal}
+        onDelete={handleDeleteFromModal}
+      />
     </div>
   )
 }
