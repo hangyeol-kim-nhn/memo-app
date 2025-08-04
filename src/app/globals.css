@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+@import '@uiw/react-md-editor/markdown-editor.css';
+@import '@uiw/react-markdown-preview/markdown.css';
 
 :root {
   --background: #ffffff;
@@ -38,4 +40,225 @@ body {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* 마크다운 편집기 커스텀 스타일 */
+.w-md-editor {
+  background-color: #ffffff;
+}
+
+.w-md-editor.w-md-editor-focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+.w-md-editor-text-textarea,
+.w-md-editor-text {
+  color: #374151 !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+.w-md-editor-text-textarea {
+  background-color: #ffffff !important;
+}
+
+/* 툴바 스타일 */
+.w-md-editor-toolbar {
+  background-color: #f9fafb !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+.w-md-editor-toolbar button {
+  color: #6b7280 !important;
+}
+
+.w-md-editor-toolbar button:hover {
+  color: #374151 !important;
+  background-color: #e5e7eb !important;
+}
+
+/* 프리뷰 영역 스타일 */
+.w-md-editor-preview {
+  background-color: #ffffff !important;
+  padding: 16px !important;
+}
+
+.wmde-markdown {
+  background-color: transparent !important;
+  color: #374151 !important;
+}
+
+.wmde-markdown h1,
+.wmde-markdown h2,
+.wmde-markdown h3,
+.wmde-markdown h4,
+.wmde-markdown h5,
+.wmde-markdown h6 {
+  color: #111827 !important;
+  border-bottom: none !important;
+}
+
+.wmde-markdown h1 {
+  font-size: 2em !important;
+  margin-bottom: 16px !important;
+}
+
+.wmde-markdown h2 {
+  font-size: 1.5em !important;
+  margin-bottom: 14px !important;
+}
+
+.wmde-markdown h3 {
+  font-size: 1.25em !important;
+  margin-bottom: 12px !important;
+}
+
+.wmde-markdown p {
+  margin-bottom: 16px !important;
+  line-height: 1.6 !important;
+}
+
+.wmde-markdown ul,
+.wmde-markdown ol {
+  margin-bottom: 16px !important;
+  padding-left: 24px !important;
+}
+
+.wmde-markdown li {
+  margin-bottom: 4px !important;
+}
+
+.wmde-markdown blockquote {
+  border-left: 4px solid #e5e7eb !important;
+  padding-left: 16px !important;
+  color: #6b7280 !important;
+  margin: 16px 0 !important;
+}
+
+.wmde-markdown code {
+  background-color: #f3f4f6 !important;
+  color: #ef4444 !important;
+  padding: 2px 4px !important;
+  border-radius: 4px !important;
+  font-size: 0.875em !important;
+}
+
+.wmde-markdown pre {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+  padding: 16px !important;
+  border-radius: 8px !important;
+  overflow-x: auto !important;
+  margin: 16px 0 !important;
+}
+
+.wmde-markdown pre code {
+  background-color: transparent !important;
+  color: #f9fafb !important;
+  padding: 0 !important;
+}
+
+.wmde-markdown table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  margin: 16px 0 !important;
+}
+
+.wmde-markdown th,
+.wmde-markdown td {
+  border: 1px solid #e5e7eb !important;
+  padding: 8px 12px !important;
+  text-align: left !important;
+}
+
+.wmde-markdown th {
+  background-color: #f9fafb !important;
+  font-weight: 600 !important;
+}
+
+/* 모달 내 마크다운 렌더링 스타일 */
+.memo-detail-markdown {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.memo-detail-markdown h1,
+.memo-detail-markdown h2,
+.memo-detail-markdown h3,
+.memo-detail-markdown h4,
+.memo-detail-markdown h5,
+.memo-detail-markdown h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.memo-detail-markdown h1 {
+  font-size: 1.875rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 8px;
+}
+
+.memo-detail-markdown h2 {
+  font-size: 1.5rem;
+}
+
+.memo-detail-markdown h3 {
+  font-size: 1.25rem;
+}
+
+.memo-detail-markdown p {
+  margin-bottom: 16px;
+}
+
+.memo-detail-markdown ul,
+.memo-detail-markdown ol {
+  margin-bottom: 16px;
+  padding-left: 20px;
+}
+
+.memo-detail-markdown li {
+  margin-bottom: 4px;
+}
+
+.memo-detail-markdown strong {
+  font-weight: 600;
+}
+
+.memo-detail-markdown em {
+  font-style: italic;
+}
+
+.memo-detail-markdown code {
+  background-color: #f3f4f6;
+  color: #ef4444;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.875em;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.memo-detail-markdown pre {
+  background-color: #1f2937;
+  color: #f9fafb;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.memo-detail-markdown pre code {
+  background-color: transparent;
+  color: #f9fafb;
+  padding: 0;
+}
+
+.memo-detail-markdown blockquote {
+  border-left: 4px solid #3b82f6;
+  padding-left: 16px;
+  color: #6b7280;
+  margin: 16px 0;
+  font-style: italic;
 }

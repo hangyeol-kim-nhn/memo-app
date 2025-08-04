@@ -6,9 +6,10 @@ interface MemoItemProps {
   memo: Memo
   onEdit: (memo: Memo) => void
   onDelete: (id: string) => void
+  onView?: (memo: Memo) => void
 }
 
-export default function MemoItem({ memo, onEdit, onDelete }: MemoItemProps) {
+export default function MemoItem({ memo, onEdit, onDelete, onView }: MemoItemProps) {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
     return date.toLocaleDateString('ko-KR', {
@@ -31,12 +32,21 @@ export default function MemoItem({ memo, onEdit, onDelete }: MemoItemProps) {
     return colors[category as keyof typeof colors] || colors.other
   }
 
+  const handleCardClick = () => {
+    if (onView) {
+      onView(memo)
+    }
+  }
+
   return (
     <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6 hover:shadow-lg transition-shadow duration-200">
       {/* 헤더 */}
       <div className="flex justify-between items-start mb-3">
-        <div className="flex-1">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+        <div 
+          className="flex-1 cursor-pointer" 
+          onClick={handleCardClick}
+        >
+          <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 hover:text-blue-600 transition-colors">
             {memo.title}
           </h3>
           <div className="flex items-center gap-2">
@@ -100,8 +110,11 @@ export default function MemoItem({ memo, onEdit, onDelete }: MemoItemProps) {
       </div>
 
       {/* 내용 */}
-      <div className="mb-4">
-        <p className="text-gray-700 text-sm leading-relaxed line-clamp-3">
+      <div 
+        className="mb-4 cursor-pointer" 
+        onClick={handleCardClick}
+      >
+        <p className="text-gray-700 text-sm leading-relaxed line-clamp-3 hover:text-gray-900 transition-colors">
           {memo.content}
         </p>
       </div>
